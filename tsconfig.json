@@ -21,11 +21,13 @@
     "types": ["node"],
     "rootDir": ".",
     "paths": {
-      "@electron-vive/share": ["packages/share/src/index.ts"]
+      "@share": ["src/share/src/index.ts"],
+      "@main/*": ["src/main/*"],
+      "@renderer/*": ["src/renderer/*"],
     }
   },
   "include": [
-    "packages",
-    ".electron-vive"
+    "src/**/*",
+    "electron-vive"
  ]
 }
