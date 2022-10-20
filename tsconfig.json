@@ -21,7 +21,7 @@
     "types": ["node"],
     "rootDir": ".",
     "paths": {
-      "@share": ["src/share/src/index.ts"],
+      "@share": ["src/share/index.ts"],
       "@main/*": ["src/main/*"],
       "@renderer/*": ["src/renderer/*"],
     }

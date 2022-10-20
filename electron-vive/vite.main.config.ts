@@ -1,9 +1,13 @@
 import type { UserConfig } from 'vite'
 import { mergeConfig } from 'vite'
-import { commonConfig } from './helper'
+import { SRC_DIR, commonConfig } from './helper'
 
 const mainConfig: UserConfig = {
-
+  resolve: {
+    alias: [
+      { find: /@main/, replacement: `${SRC_DIR}/main` },
+    ],
+  },
 }
 
 export default mergeConfig(commonConfig, mainConfig)
