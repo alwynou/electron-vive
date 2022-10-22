@@ -1,0 +1,17 @@
+{
+  "extends": "./.electron-vive/tsconfig/tsconfig.node.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@main/*": ["src/main/*"],
+      "@share": ["src/share/index.ts"]
+    }
+  },
+  "include": [
+    "src/main/**/*.ts",
+    "src/share/**/*.ts",
+    "./.electron-vive/**/*.ts",
+    "types/**/*.ts",
+  ]
+}

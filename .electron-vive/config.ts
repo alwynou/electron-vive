@@ -5,8 +5,14 @@ import type { UserConfig } from 'vite'
 export const ROOT_DIR = fileURLToPath(new URL('../', import.meta.url))
 export const SRC_DIR = join(ROOT_DIR, './src')
 export const ENVDIR = ROOT_DIR
-export const DEV_SERVER_PORT = 8090
 export const DIST_DIR = join(ROOT_DIR, 'dist/')
+export const OUTPUT_RENDERER_DIR = join(DIST_DIR, 'electron/front_views/')
+export const OUTPUT_MAIN_DIR = join(DIST_DIR, 'electron/')
+
+// only for dev
+export const DEV_SERVER_PORT = 8090
+
+
 export const commonConfig = (mode: string): UserConfig => {
   return {
     resolve: {

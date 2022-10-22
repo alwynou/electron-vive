@@ -1,0 +1,18 @@
+{
+  "extends": "./.electron-vive/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@renderer/*": ["src/renderer/*"],
+      "@share": ["src/share/index.ts"]
+    }
+  },
+  "include": [
+    "src/renderer/**/*.ts",
+    "src/renderer/**/*.tsx",
+    "src/renderer/**/*.vue",
+    "src/share/**/*.ts",
+    "types/**/*.ts"
+  ]
+}

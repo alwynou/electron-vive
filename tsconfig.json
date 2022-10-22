@@ -1,34 +1,11 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "target": "esnext",
-    "useDefineForClassFields": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strict": true,
-    "noUnusedLocals": true,
-    "experimentalDecorators": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "jsx": "preserve",
-    "isolatedModules": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": ["node"],
-    "rootDir": ".",
-    "paths": {
-      "@share": ["src/share/index.ts"],
-      "@main/*": ["src/main/*"],
-      "@renderer/*": ["src/renderer/*"],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.main.json"
+    },
+    {
+      "path": "./tsconfig.renderer.json"
     }
-  },
-  "include": [
-    "src",
-    "types",
-    "electron-vive"
- ]
+  ]
 }

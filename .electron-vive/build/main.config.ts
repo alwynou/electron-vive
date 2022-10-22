@@ -2,7 +2,7 @@ import { join } from 'path'
 import { builtinModules } from 'module'
 import type { UserConfig } from 'vite'
 import { defineConfig, mergeConfig } from 'vite'
-import { DEV_SERVER_PORT, DIST_DIR, SRC_DIR, commonConfig } from './helper'
+import { DEV_SERVER_PORT, DIST_DIR, SRC_DIR, commonConfig } from '../config'
 
 export default defineConfig(({ mode }) => {
   const mainConfig: UserConfig = {
@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
         output: {
           dir: join(DIST_DIR, 'electron'),
           entryFileNames: '[name].js',
-          chunkFileNames: '[name].js',
+          chunkFileNames: 'chunks/[name].js',
           assetFileNames: 'assets/[name].[ext]',
           format: 'commonjs',
         },

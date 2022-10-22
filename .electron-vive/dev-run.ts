@@ -1,24 +1,18 @@
 import { join } from 'node:path'
 import type { ChildProcess } from 'node:child_process'
 import { spawn } from 'node:child_process'
-import { build, createServer } from 'vite'
 import pic from 'picocolors'
 import type { Colors } from 'picocolors/types'
-import type { RollupWatcher } from 'rollup'
-import { DEV_SERVER_PORT, DIST_DIR, ROOT_DIR, SRC_DIR } from './helper'
+import { DIST_DIR, } from './config'
+import { devBuildMain, devRendererServer } from './build'
 
 let manualRestart = false
 let electronProcess: ChildProcess | null
+
 async function mainRun() {
-  const ret = await build({
-    configFile: join(ROOT_DIR, './electron-vive/vite.main.config.ts'),
-    mode: 'development',
-    build: {
-      minify: false,
-      watch: {},
-    },
-  })
-    ; (ret as unknown as RollupWatcher).on('change', () => {
+  const ret = await devBuildMain()
+
+  ret.on('change', () => {
     if (electronProcess) {
       manualRestart = true
       process.kill(electronProcess.pid!)
@@ -32,11 +26,7 @@ async function mainRun() {
 }
 
 async function rendererRun() {
-  const server = await createServer({
-    root: join(SRC_DIR, 'renderer'),
-    configFile: join(ROOT_DIR, './electron-vive/vite.renderer.config.ts'),
-  })
-  await server.listen(DEV_SERVER_PORT)
+  const server = await devRendererServer()
   // console.log(`\n  ${pic.green(`${pic.bold('ELECTRON-VIVE-SERVER')}`)}\n`)
   // console.log(`renderer 用时: ${Math.ceil(performance.now() - startTime)} ms\n`)
   return server
