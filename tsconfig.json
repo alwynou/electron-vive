@@ -13,7 +13,7 @@
     "esModuleInterop": true,
     "removeComments": false,
     "jsx": "preserve",
-    "isolatedModules": false,
+    "isolatedModules": true,
     "lib": [
       "esnext",
       "dom"
@@ -27,7 +27,8 @@
     }
   },
   "include": [
-    "src/**/*",
+    "src",
+    "types",
     "electron-vive"
  ]
 }
