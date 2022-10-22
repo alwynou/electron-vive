@@ -3,13 +3,13 @@ import { join } from 'node:path'
 import { defineConfig, mergeConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { DEV_SERVER_PORT, SRC_DIR, commonConfig } from '../config'
-import { DIST_DIR } from '.electron-vive/config'
+import { DEV_SERVER_PORT, SRC_DIR, commonConfig, DIST_DIR, OUTPUT_RENDERER_DIR } from '../config'
 
 export default defineConfig(({ mode }) => {
 
   const rendererConfig: UserConfig = {
     root: join(SRC_DIR, 'renderer'),
+    base: './',
     plugins: [vue(), vueJsx()],
     server: { port: DEV_SERVER_PORT },
     resolve: {
@@ -17,8 +17,8 @@ export default defineConfig(({ mode }) => {
         { find: /@renderer/, replacement: join(SRC_DIR, 'renderer/src') },
       ],
     },
-    build:{
-      outDir: DIST_DIR
+    build: {
+      outDir: OUTPUT_RENDERER_DIR
     }
   }
 

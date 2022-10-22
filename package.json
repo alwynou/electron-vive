@@ -4,7 +4,11 @@
   "description": "",
   "scripts": {
     "test": "vitest",
-    "dev": "tsx ./electron-vive/dev-run.ts"
+    "build": "pnpm run build:main && pnpm run build:renderer",
+    "build:main": "tsx .electron-vive/build.main.ts",
+    "build:renderer": "tsx .electron-vive/build.renderer.ts",
+    "dev": "tsx ./.electron-vive/dev-run.ts",
+    "electron": "electron ./dist/electron/index.js"
   },
   "author": {
     "name": "alwynou",

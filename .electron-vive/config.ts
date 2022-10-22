@@ -6,7 +6,7 @@ export const ROOT_DIR = fileURLToPath(new URL('../', import.meta.url))
 export const SRC_DIR = join(ROOT_DIR, './src')
 export const ENVDIR = ROOT_DIR
 export const DIST_DIR = join(ROOT_DIR, 'dist/')
-export const OUTPUT_RENDERER_DIR = join(DIST_DIR, 'electron/front_views/')
+export const OUTPUT_RENDERER_DIR = DIST_DIR
 export const OUTPUT_MAIN_DIR = join(DIST_DIR, 'electron/')
 
 // only for dev
