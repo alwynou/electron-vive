@@ -5,6 +5,8 @@ import pic from 'picocolors'
 import type { Colors } from 'picocolors/types'
 import { DIST_DIR, } from './config'
 import { devBuildMain, devRendererServer } from './build'
+import { createLogger } from 'vite'
+const logger = createLogger('info', { allowClearScreen: true, prefix: "VIVE" })
 
 let manualRestart = false
 let electronProcess: ChildProcess | null
@@ -59,12 +61,10 @@ function electronLog(data: any, color: keyof Colors) {
     log += `  ${line}\n`
   })
   if (/[0-9A-z]+/.test(log)) {
-    // eslint-disable-next-line no-console
-    console.log(
-      `${pic.bold((pic[color] as any)('┏ Electron -------------------'))
+    logger.info(
+      `\n${pic.bold((pic[color] as any)('┏ VIVE ERROR-------------------'))
       }\n\n${log
-      }${pic.bold((pic[color] as any)('┗ ----------------------------'))
-      }\n`,
+      }${pic.bold((pic[color] as any)('┗ -----------------------------'))}\n`,
     )
   }
 }
